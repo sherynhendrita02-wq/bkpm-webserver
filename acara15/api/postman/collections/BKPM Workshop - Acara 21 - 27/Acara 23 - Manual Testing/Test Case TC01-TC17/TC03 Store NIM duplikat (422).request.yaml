@@ -1,0 +1,16 @@
+$kind: http-request
+description: Test case blackbox acara 23. Status yang diharapkan ada pada nama request.
+url: "{{host}}/acara23/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "220100123",
+      "nama": "Duplikat",
+      "prodi": "TI"
+    }
+order: 3000

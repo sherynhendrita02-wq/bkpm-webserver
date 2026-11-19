@@ -1,0 +1,7 @@
+$kind: http-request
+description: Test case blackbox acara 23. Status yang diharapkan ada pada nama request.
+url: "{{host}}/acara23/public/mahasiswa?id={{id_a}}"
+method: DELETE
+queryParams:
+  id: "{{id_a}}"
+order: 16000

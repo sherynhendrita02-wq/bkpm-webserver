@@ -1,0 +1,17 @@
+$kind: http-request
+name: 2. POST /register
+description: "**AuthController::register()** - Publik."
+url: "{{host}}/acara21/public/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "budi",
+      "email": "budi@example.com",
+      "password": "rahasia123"
+    }
+examples: ./.resources/2. POST -register.resources/examples
+order: 2000

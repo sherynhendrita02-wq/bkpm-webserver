@@ -1,0 +1,6 @@
+$kind: http-request
+name: 5. GET /mahasiswa (cek kolom foto)
+description: Respons memuat field `foto`. Gambar dapat dibuka di `{{host}}/acara27/public/uploads/<nama_berkas>`.
+url: "{{host}}/acara27/public/mahasiswa"
+method: GET
+order: 5000

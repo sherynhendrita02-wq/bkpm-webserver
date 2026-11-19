@@ -1,0 +1,10 @@
+$kind: http-request
+name: 6. DELETE /mahasiswa?id= (foto ikut terhapus)
+description: "**MahasiswaController::destroy($id)** - Admin. Berkas foto ikut dihapus dari `public/uploads/`."
+url: "{{host}}/acara26/public/mahasiswa?id={{id_a}}"
+method: DELETE
+headers:
+  Authorization: Bearer {{token_admin}}
+queryParams:
+  id: "{{id_a}}"
+order: 6000

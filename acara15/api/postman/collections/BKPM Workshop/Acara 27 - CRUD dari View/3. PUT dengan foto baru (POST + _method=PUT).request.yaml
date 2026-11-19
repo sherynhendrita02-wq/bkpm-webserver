@@ -1,0 +1,26 @@
+$kind: http-request
+description: "**MahasiswaController::update($id)** - Admin. PHP tidak membaca multipart pada method PUT, jadi dikirim sebagai POST dengan `_method=PUT`. Foto lama otomatis dihapus (unlink)."
+url: "{{host}}/acara27/public/mahasiswa?id={{id_a}}&_method=PUT"
+method: POST
+headers:
+  Authorization: Bearer {{token_admin}}
+queryParams:
+  id: "{{id_a}}"
+  _method: PUT
+body:
+  type: formdata
+  content:
+    - type: text
+      key: nim
+      value: "260100001"
+    - type: text
+      key: nama
+      value: Mahasiswa Berfoto Revisi
+    - type: text
+      key: prodi
+      value: TI
+    - type: file
+      key: foto
+      src: []
+examples: ./.resources/3. PUT dengan foto baru (POST + _method=PUT).resources/examples
+order: 3000

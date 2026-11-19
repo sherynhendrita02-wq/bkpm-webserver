@@ -1,0 +1,11 @@
+$kind: http-request
+name: 7. DELETE /mahasiswa?id=
+description: "**MahasiswaController::destroy($id)** - Terproteksi (Bearer token)."
+url: "{{host}}/acara21/public/mahasiswa?id={{id_a}}"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_a}}"
+examples: ./.resources/7. DELETE -mahasiswa-id=.resources/examples
+order: 7000

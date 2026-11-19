@@ -1,0 +1,22 @@
+$kind: http-example
+request:
+  url: "{{host}}/acara21/public/mahasiswa?id={{id_a}}"
+  method: GET
+  queryParams:
+    id: "{{id_a}}"
+response:
+  statusCode: 404
+  statusText: Not Found
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "success": false,
+        "message": "Data tidak ditemukan",
+        "data": null,
+        "errors": [],
+        "timestamp": "2026-11-19T06:50:00+07:00"
+      }
+order: 1000

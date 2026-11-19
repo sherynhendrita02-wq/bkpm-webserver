@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>Dashboard Sistem Akademik</h1>
+    <div><span class="who" id="info-user"></span> <button class="btn sec sm" id="btn-logout">Logout</button></div>
+  </header>
+  <main>
+    <section class="card">
+      <h2>Ringkasan</h2>
+      <div class="stat"><div class="box"><b id="total-mahasiswa">-</b>Total Mahasiswa</div></div>
+    </section>
+    <section class="card">
+      <div class="toolbar">
+        <h2 style="margin:0">Data Mahasiswa</h2>
+        <button class="btn" id="btn-tambah">+ Tambah</button>
+      </div>
+      <table id="tabel-mahasiswa">
+        <thead><tr><th>NIM</th><th>Nama</th><th>Program Studi</th><th class="kolom-aksi">Aksi</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+  <div id="toast-area"></div>
+  <script src="common.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

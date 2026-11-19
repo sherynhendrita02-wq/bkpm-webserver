@@ -1,0 +1,20 @@
+$kind: http-request
+description: Simpan token ke `token_user` (role user).
+url: "{{host}}/acara27/public/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const j = pm.response.json();
+      if (j.success) { pm.collectionVariables.set('token_user', j.data.token); }
+    language: text/javascript
+order: 7000

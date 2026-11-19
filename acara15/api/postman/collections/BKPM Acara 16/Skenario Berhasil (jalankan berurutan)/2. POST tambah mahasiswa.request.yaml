@@ -1,0 +1,28 @@
+$kind: http-request
+description: Menyimpan id data baru ke variabel {{id}} untuk request berikutnya.
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nim": "{{nim}}",
+      "nama": "Dewi Lestari",
+      "prodi": "Teknik Informatika",
+      "email": "dewi@gmail.com"
+    }
+scripts:
+  - type: beforeRequest
+    code: pm.collectionVariables.set('nim', String(Math.floor(100000000 + Math.random()*900000000)));
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test('Status code 201', function () { pm.response.to.have.status(201); });
+      pm.test('Response berformat JSON', function () { pm.response.to.be.json; });
+      const j = pm.response.json();
+      if (j.data && j.data.id) { pm.collectionVariables.set('id', j.data.id); }
+    language: text/javascript
+order: 2000

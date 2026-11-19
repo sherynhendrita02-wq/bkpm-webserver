@@ -1,0 +1,40 @@
+$kind: http-example
+request:
+  url: "{{host}}/acara27/public/mahasiswa"
+  method: POST
+  headers:
+    Authorization: Bearer {{token_admin}}
+  body:
+    type: formdata
+    content:
+      - type: text
+        key: nim
+        value: "260100001"
+      - type: text
+        key: nama
+        value: Mahasiswa Berfoto
+      - type: text
+        key: prodi
+        value: TI
+      - type: file
+        key: foto
+        src: []
+response:
+  statusCode: 201
+  statusText: Created
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Data berhasil ditambahkan",
+        "data": {
+          "id": "20",
+          "foto": "foto_65f1a2b3c4d5e6.12345678.png"
+        },
+        "errors": [],
+        "timestamp": "2026-11-19T06:50:00+07:00"
+      }
+order: 1000

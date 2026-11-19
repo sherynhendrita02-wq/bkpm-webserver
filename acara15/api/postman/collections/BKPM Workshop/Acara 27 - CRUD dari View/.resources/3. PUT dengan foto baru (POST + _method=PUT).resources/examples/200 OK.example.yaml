@@ -1,0 +1,42 @@
+$kind: http-example
+request:
+  url: "{{host}}/acara27/public/mahasiswa?id={{id_a}}&_method=PUT"
+  method: POST
+  headers:
+    Authorization: Bearer {{token_admin}}
+  queryParams:
+    id: "{{id_a}}"
+    _method: PUT
+  body:
+    type: formdata
+    content:
+      - type: text
+        key: nim
+        value: "260100001"
+      - type: text
+        key: nama
+        value: Mahasiswa Berfoto Revisi
+      - type: text
+        key: prodi
+        value: TI
+      - type: file
+        key: foto
+        src: []
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "success": true,
+        "message": "Data berhasil diperbarui",
+        "data": {
+          "foto": "foto_65f1b9a8d7c6e5.87654321.png"
+        },
+        "errors": [],
+        "timestamp": "2026-11-19T06:50:00+07:00"
+      }
+order: 1000

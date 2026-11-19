@@ -1,0 +1,18 @@
+$kind: http-request
+name: 5. POST /mahasiswa
+description: "**MahasiswaController::store()** - Terproteksi (Bearer token)."
+url: "{{host}}/acara21/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "230100777",
+      "nama": "Test Token",
+      "prodi": "TI"
+    }
+examples: ./.resources/5. POST -mahasiswa.resources/examples
+order: 5000

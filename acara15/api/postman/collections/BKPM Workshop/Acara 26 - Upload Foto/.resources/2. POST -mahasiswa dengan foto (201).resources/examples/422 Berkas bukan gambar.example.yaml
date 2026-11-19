@@ -1,0 +1,37 @@
+$kind: http-example
+request:
+  url: "{{host}}/acara26/public/mahasiswa"
+  method: POST
+  headers:
+    Authorization: Bearer {{token_admin}}
+  body:
+    type: formdata
+    content:
+      - type: text
+        key: nim
+        value: "260100001"
+      - type: text
+        key: nama
+        value: Mahasiswa Berfoto
+      - type: text
+        key: prodi
+        value: TI
+      - type: file
+        key: foto
+        src: []
+response:
+  statusCode: 422
+  statusText: Unprocessable Entity
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "success": false,
+        "message": "Berkas harus berupa gambar JPG/PNG yang valid",
+        "data": null,
+        "errors": [],
+        "timestamp": "2026-11-19T06:50:00+07:00"
+      }
+order: 2000

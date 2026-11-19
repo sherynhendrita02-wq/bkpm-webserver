@@ -1,0 +1,9 @@
+$kind: http-request
+name: 4. GET /mahasiswa?id=
+description: "**MahasiswaController::index()** - Publik. Satu data."
+url: "{{host}}/acara21/public/mahasiswa?id={{id_a}}"
+method: GET
+queryParams:
+  id: "{{id_a}}"
+examples: ./.resources/4. GET -mahasiswa-id=.resources/examples
+order: 4000

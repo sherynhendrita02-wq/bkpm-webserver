@@ -2,6 +2,13 @@
 workspace:
   id: 62816c8b-494a-4690-8700-6827342191a7
 
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../postman/collections/BKPM Workshop - Acara 21 - 27: c5b605ee-a9cc-451c-9886-adc554a0a205
+    ../postman/collections/BKPM Acara 16: f50be16d-8af6-4f6e-ad88-d0e98208f52e
+
 # All resources in the `postman/` folder are automatically registered in Local View.
 # Point to additional files outside the `postman/` folder to register them individually. Example:
 #localResources:

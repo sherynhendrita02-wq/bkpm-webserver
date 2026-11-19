@@ -1,0 +1,6 @@
+$kind: http-request
+name: GET /mahasiswa (cek header CORS)
+description: "Lihat tab **Headers** respons: `Access-Control-Allow-Origin: *`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Headers`."
+url: "{{host}}/acara24/public/mahasiswa"
+method: GET
+order: 1000

@@ -1,0 +1,30 @@
+$kind: http-example
+request:
+  url: "{{host}}/acara21/public/register"
+  method: POST
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "username": "budi",
+        "email": "budi@example.com",
+        "password": "rahasia123"
+      }
+response:
+  statusCode: 409
+  statusText: Conflict
+  headers:
+    Content-Type: application/json
+  body:
+    type: json
+    content: |-
+      {
+        "success": false,
+        "message": "Username atau Email sudah terdaftar",
+        "data": null,
+        "errors": [],
+        "timestamp": "2026-11-19T06:50:00+07:00"
+      }
+order: 2000

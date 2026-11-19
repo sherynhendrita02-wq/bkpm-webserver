@@ -1,0 +1,17 @@
+$kind: http-request
+description: Test case blackbox acara 23. Status yang diharapkan ada pada nama request.
+url: "{{host}}/acara23/public/mahasiswa?id={{id_a}}"
+method: PUT
+headers:
+  Content-Type: application/json
+queryParams:
+  id: "{{id_a}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "230100001",
+      "nama": "X",
+      "prodi": "TI"
+    }
+order: 12000

@@ -1,0 +1,20 @@
+$kind: http-request
+description: Simpan token ke `token_admin`. Isi variabel `admin_username` / `admin_password`.
+url: "{{host}}/acara25/public/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{admin_username}}",
+      "password": "{{admin_password}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const j = pm.response.json();
+      if (j.success) { pm.collectionVariables.set('token_admin', j.data.token); }
+    language: text/javascript
+order: 1000

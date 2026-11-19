@@ -1,0 +1,18 @@
+$kind: http-request
+description: Body JSON biasa tetap berfungsi. Foto lama dipertahankan.
+url: "{{host}}/acara26/public/mahasiswa?id={{id_a}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_admin}}
+queryParams:
+  id: "{{id_a}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "260100001",
+      "nama": "Mahasiswa Berfoto",
+      "prodi": "TI"
+    }
+order: 4000

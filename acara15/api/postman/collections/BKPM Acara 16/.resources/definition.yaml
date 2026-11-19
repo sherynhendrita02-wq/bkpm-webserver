@@ -1,0 +1,6 @@
+$kind: collection
+description: "Pengujian RESTful API mahasiswa (acara 16): GET, GET by ID, POST, PUT, DELETE, dan skenario error."
+variables:
+  base_url: http://localhost/bkpm-webserver/acara16/public
+  id: "1"
+  nim: "123456789"

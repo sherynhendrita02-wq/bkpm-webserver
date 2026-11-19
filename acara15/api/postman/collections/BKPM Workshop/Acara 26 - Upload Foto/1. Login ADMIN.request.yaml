@@ -1,0 +1,20 @@
+$kind: http-request
+description: Simpan token ke `token_admin`. Foto hanya bisa diunggah admin.
+url: "{{host}}/acara26/public/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{admin_username}}",
+      "password": "{{admin_password}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const j = pm.response.json();
+      if (j.success) { pm.collectionVariables.set('token_admin', j.data.token); }
+    language: text/javascript
+order: 1000

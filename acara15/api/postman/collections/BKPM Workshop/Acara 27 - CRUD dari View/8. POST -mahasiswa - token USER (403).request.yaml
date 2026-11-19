@@ -1,0 +1,17 @@
+$kind: http-request
+name: 8. POST /mahasiswa - token USER (403)
+description: Role user ditolak oleh `Auth::requireAdmin()`.
+url: "{{host}}/acara27/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_user}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "270100001",
+      "nama": "Uji User",
+      "prodi": "TI"
+    }
+order: 8000

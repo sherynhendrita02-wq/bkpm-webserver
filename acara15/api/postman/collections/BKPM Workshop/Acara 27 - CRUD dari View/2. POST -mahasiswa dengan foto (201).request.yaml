@@ -1,0 +1,24 @@
+$kind: http-request
+name: 2. POST /mahasiswa dengan foto (201)
+description: "**MahasiswaController::store()** - Admin. Body **form-data**. Pada field `foto` pilih tipe **File** lalu pilih gambar JPG/PNG < 2MB. Jangan atur Content-Type manual. Berkas: `public/uploads/`."
+url: "{{host}}/acara27/public/mahasiswa"
+method: POST
+headers:
+  Authorization: Bearer {{token_admin}}
+body:
+  type: formdata
+  content:
+    - type: text
+      key: nim
+      value: "260100001"
+    - type: text
+      key: nama
+      value: Mahasiswa Berfoto
+    - type: text
+      key: prodi
+      value: TI
+    - type: file
+      key: foto
+      src: []
+examples: ./.resources/2. POST -mahasiswa dengan foto (201).resources/examples
+order: 2000
