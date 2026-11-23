@@ -1,0 +1,26 @@
+$kind: collection
+description: "Pilih environment Production, isi admin_password, lalu Run collection. Berisi 11 request: login, data tampil, app/ terblokir, dan 7 test case pilihan dari Acara 23."
+variables:
+  token: ""
+  token_user: ""
+  nim_uji: ""
+  nim_lain: ""
+  user_username: ""
+  user_email: ""
+  user_password: ""
+scripts:
+  - type: http:beforeRequest
+    code: |-
+      // Token JWT hanya berlaku 5 menit. Perbarui otomatis untuk request TC/EX/Cleanup yang memakai token admin.
+      const nm = pm.info.requestName || '';
+      if (/^(TC|EX|Cleanup)/.test(nm)) {
+        const t = pm.collectionVariables.get('token') || '';
+        let exp = 0;
+        try { let p = t.split('.')[1].replace(/-/g,'+').replace(/_/g,'/'); while (p.length % 4) p += '='; exp = JSON.parse(atob(p)).exp; } catch (e) {}
+        if (exp - Date.now()/1000 < 30) {
+          pm.sendRequest({ url: pm.variables.get('base_url') + '/login', method: 'POST', header: { 'Content-Type': 'application/json' },
+            body: { mode: 'raw', raw: JSON.stringify({ username: pm.environment.get('admin_username'), password: pm.environment.get('admin_password') }) } },
+            (err, res) => { if (!err && res.code === 200) pm.collectionVariables.set('token', res.json().data.token); });
+        }
+      }
+    language: text/javascript

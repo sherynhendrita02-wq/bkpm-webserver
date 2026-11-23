@@ -1,0 +1,32 @@
+:root { --bg:#f4f6fb; --card:#fff; --ink:#1f2937; --muted:#6b7280; --primary:#2563eb; --primary-d:#1d4ed8; --danger:#dc2626; --ok:#16a34a; --line:#e5e7eb; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: "Segoe UI", system-ui, sans-serif; background:var(--bg); color:var(--ink); }
+header.bar { background:var(--primary); color:#fff; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+header.bar h1 { font-size:18px; margin:0; }
+header.bar .who { font-size:14px; opacity:.9; }
+main { max-width:960px; margin:24px auto; padding:0 16px; }
+.card { background:var(--card); border-radius:10px; box-shadow:0 1px 3px rgba(0,0,0,.08); padding:20px; margin-bottom:20px; }
+.card h2 { margin:0 0 14px; font-size:17px; }
+table { width:100%; border-collapse:collapse; font-size:14px; }
+th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); }
+th { background:#f9fafb; font-weight:600; }
+td.status { text-align:center; color:var(--muted); padding:22px; }
+img.foto { width:44px; height:44px; object-fit:cover; border-radius:50%; background:#e5e7eb; }
+.btn { display:inline-block; border:0; background:var(--primary); color:#fff; padding:8px 14px; border-radius:6px; font-size:14px; cursor:pointer; text-decoration:none; }
+.btn:hover { background:var(--primary-d); }
+.btn.sec { background:#6b7280; } .btn.warn { background:#d97706; } .btn.danger { background:var(--danger); }
+.btn.sm { padding:5px 10px; font-size:13px; }
+.stat { display:flex; gap:16px; flex-wrap:wrap; }
+.stat .box { flex:1; min-width:160px; background:#eff6ff; border-radius:8px; padding:14px 16px; }
+.stat .box b { display:block; font-size:28px; color:var(--primary); }
+label { display:block; font-size:14px; margin:12px 0 4px; font-weight:600; }
+input[type=text], input[type=password], input[type=file] { width:100%; padding:9px 10px; border:1px solid #d1d5db; border-radius:6px; font-size:14px; }
+.err { color:var(--danger); font-size:13px; min-height:16px; margin-top:4px; }
+.login-box { max-width:380px; margin:8vh auto; }
+.toolbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; gap:8px; flex-wrap:wrap; }
+#toast-area { position:fixed; bottom:16px; right:16px; display:flex; flex-direction:column; gap:8px; z-index:50; }
+.toast { padding:11px 16px; border-radius:8px; color:#fff; font-size:14px; box-shadow:0 4px 12px rgba(0,0,0,.2); }
+.toast.ok { background:var(--ok); } .toast.fail { background:var(--danger); }
+dialog { border:0; border-radius:10px; padding:22px; width:min(420px, 92vw); box-shadow:0 10px 30px rgba(0,0,0,.3); }
+dialog::backdrop { background:rgba(0,0,0,.4); }
+dialog h2 { margin:0 0 6px; font-size:17px; }

@@ -1,0 +1,25 @@
+$kind: http-request
+name: "Persiapan: buat NIM 220100123 (tidak difoto)"
+description: "Harapan status: 201"
+url: "{{host}}/acara22/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "220100123",
+      "nama": "Test Token",
+      "prodi": "TI"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 201", function () { pm.response.to.have.status(201); });
+      var j=pm.response.json(); if(j.data && j.data.id){ pm.collectionVariables.set("new_id", j.data.id); }
+    language: text/javascript
+order: 2000

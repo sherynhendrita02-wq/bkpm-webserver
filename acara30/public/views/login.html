@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card login-box">
+    <h2>Login Sistem Akademik</h2>
+    <form id="form-login">
+      <label for="username">Username</label>
+      <input type="text" id="username" autocomplete="username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" autocomplete="current-password" required>
+      <div class="err" id="pesan-error"></div>
+      <button class="btn" type="submit" style="width:100%;margin-top:10px">Masuk</button>
+    </form>
+    <p style="font-size:13px;margin-bottom:0"><a href="index.html">&larr; Lihat data tanpa login</a></p>
+  </div>
+  <script src="common.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>

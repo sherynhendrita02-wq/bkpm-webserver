@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  **Skenario:** Update NIM 8 digit (tidak valid)
+
+  **Hasil diharapkan:** 422 Unprocessable
+
+  nim = 23010001.
+url: "{{base_url}}/mahasiswa?id={{id_uji}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_uji}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "23010001",
+      "nama": "Mahasiswa Uji",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 422', () => pm.response.to.have.status(422));
+      pm.test('Pesan: Format NIM tidak valid, harus 9 digit', () => pm.expect(pm.response.json().message).to.eql("Format NIM tidak valid, harus 9 digit"));
+    language: text/javascript
+order: 8000

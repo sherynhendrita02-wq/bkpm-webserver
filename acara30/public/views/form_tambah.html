@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tambah Mahasiswa</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>Tambah Mahasiswa</h1>
+    <div><span class="who" id="info-user"></span> <a class="btn sec sm" href="dashboard.html">&larr; Kembali</a></div>
+  </header>
+  <main>
+    <section class="card" style="max-width:520px">
+      <form id="form-mhs" novalidate>
+        <label for="nim">NIM</label>
+        <input type="text" id="nim" inputmode="numeric" maxlength="9" placeholder="9 digit angka">
+        <div class="err" id="err-nim"></div>
+        <label for="nama">Nama</label>
+        <input type="text" id="nama">
+        <div class="err" id="err-nama"></div>
+        <label for="prodi">Program Studi</label>
+        <input type="text" id="prodi">
+        <div class="err" id="err-prodi"></div>
+
+        <label for="inputFoto">Foto (JPG/PNG, maks 2MB)</label>
+        <input type="file" id="inputFoto" accept="image/png,image/jpeg">
+        <div class="err" id="err-foto"></div>
+        <div style="margin-top:16px"><button type="submit" class="btn" id="btn-simpan">Simpan</button></div>
+      </form>
+    </section>
+  </main>
+  <div id="toast-area"></div>
+  <script src="common.js"></script>
+  <script src="form_tambah.js"></script>
+</body>
+</html>

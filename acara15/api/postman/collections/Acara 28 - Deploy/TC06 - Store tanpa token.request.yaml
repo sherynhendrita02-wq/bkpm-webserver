@@ -1,0 +1,26 @@
+$kind: http-request
+description: |-
+  **Skenario:** Store tanpa token
+
+  **Hasil diharapkan:** 401 Unauthorized
+
+  Tanpa header Authorization.
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nim": "{{nim_uji}}",
+      "nama": "Tanpa Token",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 401', () => pm.response.to.have.status(401));
+      pm.test('Pesan: Token tidak ditemukan', () => pm.expect(pm.response.json().message).to.eql("Token tidak ditemukan"));
+    language: text/javascript
+order: 7000

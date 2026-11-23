@@ -1,0 +1,18 @@
+$kind: http-request
+url: "{{base_url}}/api/auth/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nama": "Rina",
+      "email": "rina@example.com",
+      "password": "rahasia1"
+    }
+scripts:
+  - type: afterResponse
+    code: pm.test('Status 409', function () { pm.response.to.have.status(409); });
+    language: text/javascript
+order: 4000

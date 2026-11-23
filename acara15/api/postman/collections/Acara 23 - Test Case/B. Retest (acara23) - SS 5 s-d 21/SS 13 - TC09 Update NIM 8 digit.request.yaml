@@ -1,0 +1,24 @@
+$kind: http-request
+description: "Harapan status: 422 ID diambil dari variabel id_a / id_b atau angka tertulis di URL."
+url: "{{host}}/acara23/public/mahasiswa?id={{id_a}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_a}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "23010001",
+      "nama": "Nama Diubah",
+      "prodi": "TI"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 422", function () { pm.response.to.have.status(422); });
+    language: text/javascript
+order: 10000

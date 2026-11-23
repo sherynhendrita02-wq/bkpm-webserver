@@ -1,0 +1,36 @@
+$kind: http-request
+description: Menyiapkan data uji acak (agar aman dijalankan berulang di Production) lalu login admin. Token disimpan ke variabel koleksi `token` (masa berlaku 5 menit; diperbarui otomatis jika kedaluwarsa).
+url: "{{base_url}}/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{admin_username}}",
+      "password": "{{admin_password}}"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const rnd = () => '22' + String(Math.floor(Math.random() * 1e7)).padStart(7, '0');
+      let a = rnd(), b = rnd(); while (b === a) b = rnd();
+      pm.collectionVariables.set('nim_uji', a);
+      pm.collectionVariables.set('nim_lain', b);
+      const u = 'uji_' + Date.now().toString(36);
+      pm.collectionVariables.set('user_username', u);
+      pm.collectionVariables.set('user_email', u + '@example.com');
+      pm.collectionVariables.set('user_password', 'rahasia123');
+      pm.collectionVariables.unset('id_uji');
+      pm.collectionVariables.unset('id_lain');
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test('Status 200', () => pm.response.to.have.status(200));
+      pm.test('Pesan: Login berhasil', () => pm.expect(pm.response.json().message).to.eql("Login berhasil"));
+      const j = pm.response.json();
+      pm.test('Token diterima & role admin', () => { pm.expect(j.data.token).to.be.a('string'); pm.expect(j.data.role).to.eql('admin'); });
+      pm.collectionVariables.set('token', j.data.token);
+    language: text/javascript
+order: 1000

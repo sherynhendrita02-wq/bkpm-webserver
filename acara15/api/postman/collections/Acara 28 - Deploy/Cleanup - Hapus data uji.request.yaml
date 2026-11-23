@@ -1,0 +1,15 @@
+$kind: http-request
+description: Menghapus data hasil TC01 agar Production tidak kotor.
+url: "{{base_url}}/mahasiswa?id={{id_uji}}"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_uji}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 200', () => pm.response.to.have.status(200));
+      pm.test('Pesan: Data berhasil dihapus', () => pm.expect(pm.response.json().message).to.eql("Data berhasil dihapus"));
+    language: text/javascript
+order: 11000

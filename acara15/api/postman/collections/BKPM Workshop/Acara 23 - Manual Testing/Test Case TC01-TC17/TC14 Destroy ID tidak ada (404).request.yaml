@@ -1,9 +1,0 @@
-$kind: http-request
-description: Test case blackbox acara 23. Status yang diharapkan ada pada nama request.
-url: "{{host}}/acara23/public/mahasiswa?id=999"
-method: DELETE
-headers:
-  Authorization: Bearer {{token}}
-queryParams:
-  id: "999"
-order: 14000

@@ -1,0 +1,21 @@
+$kind: http-request
+name: Ubah status -> dibayar (admin)
+url: "{{base_url}}/api/pesanan/{{pesanan_id}}/status"
+method: PATCH
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "status": "dibayar"
+    }
+auth:
+  type: bearer
+  credentials:
+    token: "{{admin_token}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('Status 200', function () { pm.response.to.have.status(200); });
+    language: text/javascript
+order: 8000

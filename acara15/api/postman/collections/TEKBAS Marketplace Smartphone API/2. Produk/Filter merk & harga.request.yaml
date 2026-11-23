@@ -1,0 +1,13 @@
+$kind: http-request
+url: "{{base_url}}/api/produk?merk=Xiaomi&harga_max=6000000&page=1&limit=5"
+method: GET
+queryParams:
+  merk: Xiaomi
+  harga_max: "6000000"
+  page: "1"
+  limit: "5"
+scripts:
+  - type: afterResponse
+    code: pm.test('Status 200', function () { pm.response.to.have.status(200); });
+    language: text/javascript
+order: 3000

@@ -1,0 +1,15 @@
+$kind: http-request
+description: "Harapan status: 404 ID diambil dari variabel id_a / id_b atau angka tertulis di URL."
+url: "{{host}}/acara23/public/mahasiswa?id=999"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "999"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 404", function () { pm.response.to.have.status(404); });
+    language: text/javascript
+order: 15000

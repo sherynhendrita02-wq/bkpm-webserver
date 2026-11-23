@@ -1,0 +1,13 @@
+$kind: http-request
+description: "Harapan status: 401 ID diambil dari variabel id_a / id_b atau angka tertulis di URL. Sengaja TANPA header Authorization."
+url: "{{host}}/acara23/public/mahasiswa?id={{id_a}}"
+method: DELETE
+queryParams:
+  id: "{{id_a}}"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 401", function () { pm.response.to.have.status(401); });
+    language: text/javascript
+order: 17000

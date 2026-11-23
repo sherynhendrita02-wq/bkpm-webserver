@@ -1,0 +1,4 @@
+$kind: collection
+description: "Butuh kolom foto (database/acara26_alter_foto.sql). View:
+  .../acara26/public/views/login.html"
+order: 6000

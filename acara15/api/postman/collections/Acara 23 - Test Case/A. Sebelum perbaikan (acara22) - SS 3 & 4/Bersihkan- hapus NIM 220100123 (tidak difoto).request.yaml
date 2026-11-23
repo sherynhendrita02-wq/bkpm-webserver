@@ -1,0 +1,16 @@
+$kind: http-request
+name: "Bersihkan: hapus NIM 220100123 (tidak difoto)"
+description: "Harapan status: 200 ID diambil dari variabel id_a / id_b atau angka tertulis di URL."
+url: "{{host}}/acara22/public/mahasiswa?id={{new_id}}"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{new_id}}"
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 200", function () { pm.response.to.have.status(200); });
+    language: text/javascript
+order: 5000

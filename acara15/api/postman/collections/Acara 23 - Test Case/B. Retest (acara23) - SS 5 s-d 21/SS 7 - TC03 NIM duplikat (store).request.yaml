@@ -1,0 +1,22 @@
+$kind: http-request
+description: "Harapan status: 422"
+url: "{{host}}/acara23/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "220100123",
+      "nama": "Test Token",
+      "prodi": "TI"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 422", function () { pm.response.to.have.status(422); });
+    language: text/javascript
+order: 4000

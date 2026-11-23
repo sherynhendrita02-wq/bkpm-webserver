@@ -1,0 +1,9 @@
+# Kredensial produksi: jangan pernah diunggah ke GitHub
+app/config/config.local.php
+# Berkas unggahan pengguna dan log
+public/uploads/*
+!public/uploads/.gitkeep
+!public/uploads/.htaccess
+*.log
+# Backup basis data berisi data asli
+database/backup/*.sql

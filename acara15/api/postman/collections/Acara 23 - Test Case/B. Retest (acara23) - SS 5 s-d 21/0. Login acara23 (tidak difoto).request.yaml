@@ -1,0 +1,22 @@
+$kind: http-request
+description: "Harapan status: 200"
+url: "{{host}}/acara23/public/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 200", function () { pm.response.to.have.status(200); });
+      var j=pm.response.json(); if(j.data && j.data.token){ pm.collectionVariables.set("token", j.data.token); }
+    language: text/javascript
+order: 1000

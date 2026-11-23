@@ -1,0 +1,1053 @@
+{
+  "info": {
+    "name": "API Sistem Informasi Akademik (Acara 27)",
+    "description": "Koleksi dokumentasi & pengujian API. Jalankan **POST /login** terlebih dahulu agar token tersimpan otomatis ke variabel `token`.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Autentikasi",
+      "description": "Endpoint publik untuk registrasi dan login (AuthController).",
+      "item": [
+        {
+          "name": "POST /register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "**Controller:** `AuthController::register()`\n\n**Akses:** Publik\n\nMendaftarkan pengguna baru. Password disimpan dalam bentuk hash.",
+            "url": {
+              "raw": "{{base_url}}/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"budi\",\n  \"email\": \"budi@example.com\",\n  \"password\": \"rahasia123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "**Controller:** `AuthController::register()`\n\n**Akses:** Publik\n\nMendaftarkan pengguna baru. Password disimpan dalam bentuk hash.",
+                "url": {
+                  "raw": "{{base_url}}/register",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "register"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"budi\",\n  \"email\": \"budi@example.com\",\n  \"password\": \"rahasia123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Registrasi berhasil\",\n  \"data\": {\n    \"id\": \"3\"\n  },\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "400 Validasi gagal",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "**Controller:** `AuthController::register()`\n\n**Akses:** Publik\n\nMendaftarkan pengguna baru. Password disimpan dalam bentuk hash.",
+                "url": {
+                  "raw": "{{base_url}}/register",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "register"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"budi\",\n  \"email\": \"budi@example.com\",\n  \"password\": \"rahasia123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Validasi gagal\",\n  \"data\": null,\n  \"errors\": {\n    \"username\": \"Field username wajib diisi\"\n  },\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "409 Duplikat",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "**Controller:** `AuthController::register()`\n\n**Akses:** Publik\n\nMendaftarkan pengguna baru. Password disimpan dalam bentuk hash.",
+                "url": {
+                  "raw": "{{base_url}}/register",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "register"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"budi\",\n  \"email\": \"budi@example.com\",\n  \"password\": \"rahasia123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Username atau Email sudah terdaftar\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "POST /login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "description": "**Controller:** `AuthController::login()`\n\n**Akses:** Publik\n\nMenghasilkan token JWT (berlaku 5 menit). Token otomatis disimpan ke variabel koleksi `token` oleh Test Script.",
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"rahasia123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 Login berhasil",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "**Controller:** `AuthController::login()`\n\n**Akses:** Publik\n\nMenghasilkan token JWT (berlaku 5 menit). Token otomatis disimpan ke variabel koleksi `token` oleh Test Script.",
+                "url": {
+                  "raw": "{{base_url}}/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"rahasia123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Login berhasil\",\n  \"data\": {\n    \"token\": \"eyJhbGciOiJIUzI1NiIs...\",\n    \"role\": \"admin\"\n  },\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "401 Kredensial salah",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "description": "**Controller:** `AuthController::login()`\n\n**Akses:** Publik\n\nMenghasilkan token JWT (berlaku 5 menit). Token otomatis disimpan ke variabel koleksi `token` oleh Test Script.",
+                "url": {
+                  "raw": "{{base_url}}/login",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "login"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"rahasia123\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Username atau password salah\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.success) { pm.collectionVariables.set('token', json.data.token); }"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mahasiswa",
+      "description": "Resource `/mahasiswa` (MahasiswaController). GET bersifat publik; POST, PUT, DELETE memerlukan header `Authorization: Bearer <token>`.",
+      "item": [
+        {
+          "name": "GET /mahasiswa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "**Controller:** `MahasiswaController::index()`\n\n**Akses:** Publik",
+            "url": {
+              "raw": "{{base_url}}/mahasiswa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "description": "**Controller:** `MahasiswaController::index()`\n\n**Akses:** Publik",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diambil\",\n  \"data\": [\n    {\n      \"id\": \"1\",\n      \"nim\": \"230100105\",\n      \"nama\": \"Test\",\n      \"prodi\": \"TI\"\n    }\n  ],\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "GET /mahasiswa?id=",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "description": "**Controller:** `MahasiswaController::index()`\n\n**Akses:** Publik\n\nMengambil satu data berdasarkan `id`.",
+            "url": {
+              "raw": "{{base_url}}/mahasiswa?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "description": "**Controller:** `MahasiswaController::index()`\n\n**Akses:** Publik\n\nMengambil satu data berdasarkan `id`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diambil\",\n  \"data\": {\n    \"id\": \"1\",\n    \"nim\": \"230100105\",\n    \"nama\": \"Test\",\n    \"prodi\": \"TI\"\n  },\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "404 Tidak ditemukan",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "description": "**Controller:** `MahasiswaController::index()`\n\n**Akses:** Publik\n\nMengambil satu data berdasarkan `id`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "POST /mahasiswa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+            "url": {
+              "raw": "{{base_url}}/mahasiswa",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "201 Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil ditambahkan\",\n  \"data\": {\n    \"id\": \"5\"\n  },\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "401 Tanpa token",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Token tidak ditemukan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "422 NIM duplikat",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"NIM sudah terdaftar\",\n  \"data\": null,\n  \"errors\": {\n    \"nim\": \"NIM sudah digunakan mahasiswa lain\"\n  },\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "422 NIM tidak valid",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Format NIM tidak valid, harus 9 digit\",\n  \"data\": null,\n  \"errors\": {\n    \"nim\": \"NIM harus terdiri dari tepat 9 angka\"\n  },\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "403 Bukan admin",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::store()`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)\n\nField wajib: `nim` (9 digit), `nama`, `prodi`.",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Akses ditolak, hanya admin yang diizinkan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "PUT /mahasiswa?id=",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "description": "**Controller:** `MahasiswaController::update($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+            "url": {
+              "raw": "{{base_url}}/mahasiswa?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token Revisi\",\n  \"prodi\": \"TI\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::update($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token Revisi\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil diperbarui\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "404 Tidak ditemukan",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::update($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token Revisi\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "403 Bukan admin",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::update($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"nim\": \"230100777\",\n  \"nama\": \"Test Token Revisi\",\n  \"prodi\": \"TI\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Akses ditolak, hanya admin yang diizinkan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "DELETE /mahasiswa?id=",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{token}}"
+              }
+            ],
+            "description": "**Controller:** `MahasiswaController::destroy($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+            "url": {
+              "raw": "{{base_url}}/mahasiswa?id=1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "mahasiswa"
+              ],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 OK",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::destroy($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"Data berhasil dihapus\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "404 Tidak ditemukan",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::destroy($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Data tidak ditemukan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            },
+            {
+              "name": "403 Bukan admin",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "description": "**Controller:** `MahasiswaController::destroy($id)`\n\n**Akses:** Terproteksi, hanya role admin (`Auth::requireAdmin()`)",
+                "url": {
+                  "raw": "{{base_url}}/mahasiswa?id=1",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "mahasiswa"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"Akses ditolak, hanya admin yang diizinkan\",\n  \"data\": null,\n  \"errors\": [],\n  \"timestamp\": \"2026-11-16T21:00:00+07:00\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost/bkpm-webserver/acara27/public"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ]
+}

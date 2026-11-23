@@ -1,6 +1,0 @@
-$kind: http-request
-name: OPTIONS /mahasiswa (preflight, harus 204)
-description: Preflight CORS dijawab langsung oleh `public/index.php` dengan status 204 No Content.
-url: "{{host}}/acara24/public/mahasiswa"
-method: OPTIONS
-order: 2000

@@ -1,0 +1,134 @@
+$kind: collection
+description: Satu collection, satu folder per acara. Jalankan 'POST /login' pada folder acara yang sedang dikerjakan agar token tersimpan otomatis. Ubah variabel `host`, `username`, `password`, `admin_username`, `admin_password`, `id_a`, `id_b` pada tab Variables.
+variables:
+  - key: host
+    value: http://localhost/bkpm-webserver
+    disabled: false
+  - key: username
+    value: testuser21
+    disabled: false
+  - key: password
+    value: Belajar123!
+    disabled: false
+  - key: admin_username
+    value: admin
+    disabled: false
+  - key: admin_password
+    value: rahasia123
+    disabled: false
+  - key: id_a
+    value: "1"
+    disabled: false
+  - key: id_b
+    value: "2"
+    disabled: false
+  - key: token
+    value: ""
+    disabled: false
+  - key: token_admin
+    value: ""
+    disabled: false
+  - key: token_user
+    value: ""
+    disabled: false
+  - key: token_palsu
+    value: token.palsu.abc
+    disabled: false
+  - key: bearer_token_14gs
+    secret: true
+    disabled: false
+  - key: json_web_token_0fc8
+    secret: true
+    disabled: false
+auth:
+  - id: 5141c171-d3a7-45cb-937b-98a895d66e53
+    type: bearer
+    name: Bearer Token
+    credentials:
+      token: |-
+        PUT
+        6. PUT /mahasiswa?id=
+        Open request
+        {{host}}/acara21/public/mahasiswa?id={{id_a}}
+        MahasiswaController::update($id) - Terproteksi (Bearer token).
+
+        ﻿
+
+        Request Headers
+        Content-Type
+        application/json
+        Authorization
+        Bearer {{token}}
+        Query Params
+        id
+        {{id_a}}
+        Body
+        raw (json)
+        json
+        {
+          "nim": "230100777",
+          "nama": "Test Token Revisi",
+          "prodi": "TI"
+        }
+        Example
+        200 OK
+        Request
+        View More
+        Postman CLI
+        postman request PUT 'http://localhost/bkpm-webserver/acara21/public/mahasiswa?id=1' \
+          --header 'Content-Type: application/json' \
+          --header 'Authorization: {{bearer_token_14gs}}' \
+          --body '{
+          "nim": "230100777",
+          "nama": "Test Token Revisi",
+          "prodi": "TI"
+        }'
+        200 OK
+        Response
+        Body
+        Headers (1)
+        json
+        {
+          "success": true,
+          "message": "Data berhasil diperbarui",
+          "data": null,
+          "errors": [],
+          "timestamp": "2026-11-19T06:50:00+07:00"
+        }
+        DELETE
+        7. DELETE /mahasiswa?id=
+        Open request
+        {{host}}/acara21/public/mahasiswa?id={{id_a}}
+        MahasiswaController::destroy($id) - Terproteksi (Bearer token).
+
+        ﻿
+
+        Request Headers
+        Authorization
+        Bearer {{token}}
+        Query Params
+        id
+        {{id_a}}
+        Example
+        200 OK
+        Request
+        View More
+        Postman CLI
+        postman request DELETE 'http://localhost/bkpm-webserver/acara21/public/mahasiswa?id=1' \
+          --header 'Authorization: {{bearer_token_14gs}}'
+        200 OK
+        Response
+        Body
+        Headers (1)
+        json
+        {
+          "success": true,
+          "message": "Data berhasil dihapus",
+          "data": null,
+          "errors": [],
+          "timestamp": "2026-11-19T06:50:00+07:00"
+        }
+        GET
+        New Request
+        Open request
+        Add request description…

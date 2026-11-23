@@ -1,0 +1,29 @@
+$kind: http-request
+description: |-
+  **Skenario:** NIM valid dan lengkap (store)
+
+  **Hasil diharapkan:** 201 Created
+
+  Data uji: nim acak 9 digit (`{{nim_uji}}`), nama, prodi.
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "{{nim_uji}}",
+      "nama": "Mahasiswa Uji",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 201', () => pm.response.to.have.status(201));
+      pm.test('Pesan: Data berhasil ditambahkan', () => pm.expect(pm.response.json().message).to.eql("Data berhasil ditambahkan"));
+      pm.collectionVariables.set('id_uji', pm.response.json().data.id);
+      pm.test('ID dikembalikan', () => pm.expect(pm.response.json().data.id).to.exist);
+    language: text/javascript
+order: 4000

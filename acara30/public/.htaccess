@@ -1,0 +1,13 @@
+Options -MultiViews
+RewriteEngine On
+
+# Acara 30 - Langkah 2: paksa seluruh trafik ke HTTPS (301)
+# Pengecualian localhost/127.0.0.1 agar lingkungan pengembangan (XAMPP/Laragon tanpa SSL) tetap bisa dipakai
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Aturan rewrite ke Front Controller (sejak acara 17)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]

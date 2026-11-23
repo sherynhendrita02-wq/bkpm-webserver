@@ -1,0 +1,28 @@
+$kind: http-request
+description: |-
+  **Skenario:** NIM duplikat (store)
+
+  **Hasil diharapkan:** 422 Unprocessable
+
+  nim sama dengan TC01.
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "{{nim_uji}}",
+      "nama": "Mahasiswa Uji",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 422', () => pm.response.to.have.status(422));
+      pm.test('Pesan: NIM sudah terdaftar', () => pm.expect(pm.response.json().message).to.eql("NIM sudah terdaftar"));
+      pm.test('errors.nim ada', () => pm.expect(pm.response.json().errors).to.have.property('nim'));
+    language: text/javascript
+order: 5000

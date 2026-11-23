@@ -1,0 +1,24 @@
+$kind: http-request
+description: "Harapan status: 400 ID diambil dari variabel id_a / id_b atau angka tertulis di URL."
+url: "{{host}}/acara23/public/mahasiswa?id={{id_a}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_a}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "230100001",
+      "nama": "",
+      "prodi": "TI"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 400", function () { pm.response.to.have.status(400); });
+    language: text/javascript
+order: 11000

@@ -1,0 +1,21 @@
+$kind: http-request
+description: "Harapan status: 401 Sengaja TANPA header Authorization."
+url: "{{host}}/acara23/public/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "nim": "220100999",
+      "nama": "Test Token",
+      "prodi": "TI"
+    }
+auth:
+  type: noauth
+scripts:
+  - type: afterResponse
+    code: pm.test("Status 401", function () { pm.response.to.have.status(401); });
+    language: text/javascript
+order: 7000

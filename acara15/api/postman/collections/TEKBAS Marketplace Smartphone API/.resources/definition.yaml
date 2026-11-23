@@ -1,0 +1,8 @@
+$kind: collection
+description: ""
+variables:
+  base_url: http://127.0.0.1:5000
+  admin_token: ""
+  pelanggan_token: ""
+  produk_id: ""
+  pesanan_id: ""

@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{base_url}}/api/pesanan?status=menunggu"
+method: GET
+queryParams:
+  status: menunggu
+auth:
+  type: bearer
+  credentials:
+    token: "{{admin_token}}"
+scripts:
+  - type: afterResponse
+    code: pm.test('Status 200', function () { pm.response.to.have.status(200); });
+    language: text/javascript
+order: 6000

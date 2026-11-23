@@ -1,3 +1,0 @@
-$kind: collection
-description: Buat 2 data awal (NIM 230100001 dan 230100002) dan isi id_a / id_b sebelum menjalankan TC07-TC17.
-order: 3000

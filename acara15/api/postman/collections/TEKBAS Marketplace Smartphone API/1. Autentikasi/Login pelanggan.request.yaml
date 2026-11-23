@@ -1,0 +1,20 @@
+$kind: http-request
+url: "{{base_url}}/api/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "rina@example.com",
+      "password": "rahasia1"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('Status 200', function () { pm.response.to.have.status(200); });
+      var j = pm.response.json();
+      pm.collectionVariables.set('pelanggan_token', j.data.token);
+    language: text/javascript
+order: 6000

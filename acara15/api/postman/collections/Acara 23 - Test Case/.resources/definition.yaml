@@ -1,0 +1,10 @@
+$kind: collection
+description: "Import, lalu cek tab Variables (host, username, password, id_a, id_b). Jalankan SATU PER SATU dari atas ke bawah. Folder A (acara22) dulu untuk SS 3-4, lalu folder B (acara23) untuk SS 5-21. Foto: method+URL, Body/Headers, status, response. Pastikan data id=1 (NIM 230100001) dan id=2 (NIM 230100002) ada di database."
+variables:
+  host: http://localhost/bkpm-webserver
+  username: admin
+  password: rahasia123
+  id_a: "1"
+  id_b: "2"
+  token: ""
+  new_id: ""
