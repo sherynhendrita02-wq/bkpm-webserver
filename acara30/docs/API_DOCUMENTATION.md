@@ -1,6 +1,6 @@
 # Dokumentasi API — Sistem Informasi Akademik (PHP Native MVC)
 
-**Base URL (produksi):** `https://DOMAIN-HOSTING-ANDA`  
+**Base URL (produksi):** `https://larynca.my.id/sheryn/public`  
 **Base URL (lokal):** `http://localhost/bkpm-webserver/acara30/public`
 **Format data:** JSON (`Content-Type: application/json`); `POST/PUT /mahasiswa` juga menerima `multipart/form-data` (untuk unggah foto)
 **Autentikasi:** JWT (Bearer Token), masa berlaku 5 menit
@@ -233,3 +233,4 @@ Seluruh response dibentuk oleh `Response::json()` dengan struktur yang sama:
 | 409 | Conflict | Username/email duplikat saat registrasi |
 | 422 | Unprocessable Entity | Format data tidak valid / NIM duplikat |
 | 500 | Internal Server Error | Kesalahan server / database |
+

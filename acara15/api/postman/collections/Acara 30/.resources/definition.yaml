@@ -1,0 +1,11 @@
+$kind: collection
+description: Jalankan lewat Collection Runner (Run collection) dari atas ke bawah. TC04 mengambil token otomatis. Token berlaku 5 menit, jadi jalankan sekaligus. Ubah admin_username/admin_password di tab Variables bila berbeda.
+variables:
+  base_url: https://larynca.my.id/sheryn/public
+  admin_username: admin
+  admin_password: rahasia123
+  token: ""
+  nim_uji: ""
+  nim_uji2: ""
+  id_uji: ""
+  id_uji2: ""

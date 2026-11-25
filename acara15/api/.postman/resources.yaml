@@ -10,6 +10,7 @@ cloudResources:
     ../postman/collections/Acara 23 - Test Case: 4644f284-a74a-4bd4-b327-33b3cb14cb2c
     ../postman/collections/TEKBAS Marketplace Smartphone API: af6c7969-5702-46bf-8431-29e15164f45c
     ../postman/collections/Acara 28 - Deploy: dbe6d0b7-8aa8-4cbf-b925-9d0c46b70313
+    ../postman/collections/Acara 30: 4b2a9626-babb-4193-8c15-f0907296732d
 
 # All resources in the `postman/` folder are automatically registered in Local View.
 # Point to additional files outside the `postman/` folder to register them individually. Example:

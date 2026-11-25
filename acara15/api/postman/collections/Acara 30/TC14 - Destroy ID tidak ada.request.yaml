@@ -1,0 +1,14 @@
+$kind: http-request
+url: "{{base_url}}/mahasiswa?id=999999"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "999999"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 404", function () { pm.response.to.have.status(404); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+    language: text/javascript
+order: 17000

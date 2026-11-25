@@ -6,7 +6,7 @@ info:
     Endpoint tulis (POST, PUT, DELETE) dilindungi JWT Bearer Token dan hanya dapat diakses role admin (RBAC).
   version: 1.1.0
 servers:
-  - url: https://DOMAIN-HOSTING-ANDA
+  - url: https://
     description: Server produksi (cPanel, HTTPS/AutoSSL) - ganti dengan domain sebenarnya
   - url: http://localhost/bkpm-webserver/acara30/public
     description: Server lokal (XAMPP/Laragon)

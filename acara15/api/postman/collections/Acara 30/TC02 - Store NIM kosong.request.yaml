@@ -1,0 +1,21 @@
+$kind: http-request
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "",
+      "nama": "Uji Postman",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 400", function () { pm.response.to.have.status(400); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+    language: text/javascript
+order: 5000

@@ -1,0 +1,26 @@
+$kind: http-request
+description: Data bantu untuk TC11, TC16, TC17; dihapus di langkah Cleanup.
+url: "{{base_url}}/mahasiswa"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+body:
+  type: json
+  content: |-
+    {
+      "nim": "{{nim_uji2}}",
+      "nama": "Uji Postman 2",
+      "prodi": "TI"
+    }
+scripts:
+  - type: beforeRequest
+    code: pm.collectionVariables.set("nim_uji2", "9" + Math.floor(10000000 + Math.random()*89999999).toString());
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("Status 201", function () { pm.response.to.have.status(201); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+      pm.collectionVariables.set("id_uji2", pm.response.json().data.id);
+    language: text/javascript
+order: 7000

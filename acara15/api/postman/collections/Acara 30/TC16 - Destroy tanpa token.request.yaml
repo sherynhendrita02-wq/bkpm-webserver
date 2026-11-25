@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{base_url}}/mahasiswa?id={{id_uji2}}"
+method: DELETE
+queryParams:
+  id: "{{id_uji2}}"
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 401", function () { pm.response.to.have.status(401); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+    language: text/javascript
+order: 14000

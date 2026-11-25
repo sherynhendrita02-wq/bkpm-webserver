@@ -1,0 +1,24 @@
+$kind: http-request
+description: "Harus dijalankan pertama: token disimpan otomatis ke variabel token."
+url: "{{base_url}}/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "username": "{{admin_username}}",
+      "password": "{{admin_password}}"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 200", function () { pm.response.to.have.status(200); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+      var j = pm.response.json();
+      pm.test("Token diterima", function () { pm.expect(j.data.token).to.be.a("string"); });
+      pm.collectionVariables.set("token", j.data.token);
+      pm.environment.set("token", j.data.token);
+    language: text/javascript
+order: 1000

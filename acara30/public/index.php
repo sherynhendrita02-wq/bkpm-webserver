@@ -1,5 +1,4 @@
 <?php
-trigger_error('uji log', E_USER_WARNING);
 
 require_once __DIR__ . '/../app/core/autoload.php';
 // Acara 30 - Langkah 3: penguatan konfigurasi PHP untuk produksi.

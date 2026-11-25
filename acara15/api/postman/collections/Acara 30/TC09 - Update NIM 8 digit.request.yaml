@@ -1,0 +1,23 @@
+$kind: http-request
+url: "{{base_url}}/mahasiswa?id={{id_uji}}"
+method: PUT
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token}}
+queryParams:
+  id: "{{id_uji}}"
+body:
+  type: json
+  content: |-
+    {
+      "nim": "23010001",
+      "nama": "Uji Postman",
+      "prodi": "TI"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status 422", function () { pm.response.to.have.status(422); });
+      pm.test("Respons JSON", function () { pm.response.to.be.json; });
+    language: text/javascript
+order: 10000

@@ -1,6 +1,6 @@
 # Laporan Pengujian — Manual Testing (Blackbox, Equivalence Partitioning)
 
-**Alat uji:** Postman · **Base URL lokal:** `http://localhost/bkpm-webserver/acara30/public` · **Base URL produksi:** `https://DOMAIN-HOSTING-ANDA`
+**Alat uji:** Postman · **Base URL lokal:** `http://localhost/bkpm-webserver/acara30/public` · **Base URL produksi:** `https://larynca.my.id/sheryn/public`
 
 ## 1. Ruang Lingkup
 
@@ -78,7 +78,7 @@ Test case TC01-TC06 berasal dari modul; TC07-TC17 adalah tambahan untuk `update(
 
 ## 5. Retest pada Lingkungan Produksi (Acara 30)
 
-Seluruh TC01-TC17 dijalankan ulang di Postman memakai Environment **Production** (`base_url = https://DOMAIN-HOSTING-ANDA`). Kolom **Hasil Aktual** dan **Status** diisi dari hasil pengujian di hosting.
+Seluruh TC01-TC17 dijalankan ulang di Postman memakai Environment **Production** (`base_url = https://larynca.my.id/sheryn/public`). Kolom **Hasil Aktual** dan **Status** diisi dari hasil pengujian di hosting.
 
 | ID | Hasil Diharapkan | Hasil Aktual (produksi) | Status |
 |---|---|---|---|
@@ -104,11 +104,12 @@ Seluruh TC01-TC17 dijalankan ulang di Postman memakai Environment **Production**
 
 | ID | Skenario | Langkah | Hasil Diharapkan | Hasil Aktual | Status |
 |---|---|---|---|---|---|
-| SEC01 | Sertifikat SSL aktif | Buka `https://DOMAIN-HOSTING-ANDA/views/index.html` | Indikator gembok/koneksi aman, data tampil | | |
-| SEC02 | Redirect HTTP ke HTTPS | Buka `http://DOMAIN-HOSTING-ANDA/views/index.html` | Otomatis berpindah ke `https://` (301) | | |
-| SEC03 | `app/` tidak dapat diakses | Buka `https://DOMAIN-HOSTING-ANDA/app/config/Database.php` | 403 atau 404 | | |
-| SEC04 | Berkas konfigurasi rahasia tertutup | Buka `https://DOMAIN-HOSTING-ANDA/app/config/config.local.php` | 403 atau 404 | | |
+| SEC01 | Sertifikat SSL aktif | Buka `https://larynca.my.id/sheryn/public/views/index.html` | Indikator gembok/koneksi aman, data tampil | | |
+| SEC02 | Redirect HTTP ke HTTPS | Buka `http://larynca.my.id/sheryn/public/views/index.html` | Otomatis berpindah ke `https://` (301) | | |
+| SEC03 | `app/` tidak dapat diakses | Buka `https://larynca.my.id/sheryn/app/config/Database.php` | 403 atau 404 | | |
+| SEC04 | Berkas konfigurasi rahasia tertutup | Buka `https://larynca.my.id/sheryn/app/config/config.local.php` | 403 atau 404 | | |
 | SEC05 | Error tidak bocor | Picu error (mis. sementara beri kredensial DB salah) lalu panggil `GET /mahasiswa` | Respons JSON generik, tanpa path atau query; rincian ada di `php_errors.log` | | |
-| SEC06 | Skrip tidak dieksekusi di uploads | Buka `https://DOMAIN-HOSTING-ANDA/uploads/x.php` | 403 atau 404 | | |
+| SEC06 | Skrip tidak dieksekusi di uploads | Buka `https://larynca.my.id/sheryn/public/uploads/x.php` | 403 atau 404 | | |
 
 > Catatan: pada Postman gunakan alamat `https://` langsung. Permintaan `http://` akan dialihkan dengan 301, dan sebagian klien mengubah POST menjadi GET saat mengikuti redirect.
+
